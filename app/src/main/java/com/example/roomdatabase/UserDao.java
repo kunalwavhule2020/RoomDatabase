@@ -15,4 +15,7 @@ public interface UserDao {
     @Query("SELECT EXISTS(SELECT * FROM User Where uid = :userId)")
     Boolean is_exist(int userId);
 
+    @Query("SELECT * FROM User")
+    List<User> getallusers();
+
 }

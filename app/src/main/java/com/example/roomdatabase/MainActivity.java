@@ -9,21 +9,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     EditText t1,t2,t3;
-    Button b1;
-    TextView lbl;
-
-
+    Button b1,b2;
+    TextView lbl,data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        t1 = findViewById(R.id.t1);
-        t2 = findViewById(R.id.t2);
-        t3 = findViewById(R.id.t3);
-        b1 = findViewById(R.id.b1);
+        t1  = findViewById(R.id.t1);
+        t2  = findViewById(R.id.t2);
+        t3  = findViewById(R.id.t3);
+        b1  = findViewById(R.id.b1);
         lbl = findViewById(R.id.lbl);
+        data= findViewById(R.id.dataholder);
+        b2  = findViewById(R.id.b2);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +45,22 @@ public class MainActivity extends AppCompatActivity {
                     lbl.setText("Data already exists");
 
                 }
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppDatabase db = Room.databaseBuilder(getApplicationContext(),AppDatabase.class,"Room_db").allowMainThreadQueries().build();
+                UserDao userDao = db.userDao();
+                List<User> users = userDao.getallusers();
+                String str = "";
+                for (User user: users)
+                    str=str+"\t "+user.getUid()+" "+user.getFirstName()+" "+user.getLastName()+"\n\n";
+
+                data.setText(str);
+
+
+
             }
         });
     }
