@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/22nov/RoomDatabase/app/src/main/res/layout/activity_fetchdata.xml" value="0.1796875" />
         <entry key="..\:/22nov/RoomDatabase/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/22nov/RoomDatabase/app/src/main/res/layout/singlerowdesign.xml" value="0.1796875" />
       </map>
     </option>
   </component>
